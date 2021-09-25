@@ -1,0 +1,50 @@
+{% extends 'control_de_pendientes/layout.html' %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+<h2>Pendientes por Condición</h2>
+
+<table class="default">
+    <thead>
+        <tr>
+            <th>Área</th>
+            <th>Sistema</th>
+            <th>Equipo / Instrumento</th>
+            <th>Descripción</th>
+            <th>Método de Intervención</th>
+            <th>Criticidad</th>
+            <th>Especialidad</th>
+            <th>Fecha de detección</th>
+            <th>Número de aviso</th>
+            <th>Estado</th>
+            <th>Observaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pending in pendings %}
+        <tr>
+            <td>{{ pending.area }}</td>
+            <td>{{ pending.system }}</td>
+            <td>{{ pending.machine }}</td>
+            <td>{{ pending.description }}</td>
+            <td>{{ pending.intervention_method }}</td>
+            <td>{{ pending.criticality }}</td>
+            <td>{{ pending.specialty }}</td>
+            <td>{{ pending.detection_date }}</td>
+            <td>{{ pending.notice_number }}</td>
+            <td>{{ pending.state }}</td>
+            <td>{{ pending.observations }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+{% else %}
+
+    <p>Por favor inicie sesion para continuar</p>
+
+{% endif %}
+
+
+{% endblock %}
