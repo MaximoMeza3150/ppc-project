@@ -1,12 +1,16 @@
 {% extends 'control_de_pendientes/layout.html' %}
 
+
+
 {% block content %}
-
-<form class="form" method="post">
-	{% csrf_token %}
-	{{ form.as_p }}
-
-	<button type="submit" id="submit">Login</button>
-</form>
-
+<div class="d-flex justify-content-center mt-5">
+	<form class="form" method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<div class="d-flex justify-content-center">
+			<button class="btn btn-primary" type="submit" id="submit">Ingresar</button>
+		</div>
+	</form>
+</div>
 {% endblock %}
+
