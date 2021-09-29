@@ -1,15 +1,18 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render, redirect
 from control_de_pendientes.models.Pending import Pending
 from .forms import UserRegisterForm
 from django.contrib import messages
+
+from django.views.generic.edit import CreateView
 
 # Create your views here.
 
 
 def feed(request):
     pendings = Pending.objects.all()
-    context = { 'pendings' : pendings }
-    return render( request , 'control_de_pendientes/feed.html' , context)
+    context = {'pendings': pendings}
+    return render(request, 'control_de_pendientes/feed.html', context)
+
 
 def register(request):
     if request.method == 'POST':
@@ -22,9 +25,22 @@ def register(request):
     else:
         form = UserRegisterForm()
 
-    context = { 'form' : form }
+    context = {'form': form}
     return render(request, 'control_de_pendientes/register.html', context)
 
 
-def registrar_pendiente(request):
-    pass
+class CrearPendiente(CreateView):
+    model = Pending
+    fields = [  'area',
+                'system',
+                'machine',
+                'description', 
+                'intervention_method', 
+                'criticality',
+                'specialty',
+                'detection_date',
+                'user',
+                'notice_number',
+                'state',
+                'observations'
+              ]
