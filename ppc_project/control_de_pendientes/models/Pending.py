@@ -1,5 +1,6 @@
 
 from django.db import models
+
 from django.contrib.auth.models import User
 from django.utils import timezone
 
@@ -21,3 +22,5 @@ class Pending(models.Model):
 
     def __str__(self):
         return f'{self.area} -*-{self.system} -*- {self.description} -*- {self.user}'
+    def get_absolute_url(self):
+        return ("feed")

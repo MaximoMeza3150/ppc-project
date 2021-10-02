@@ -20,6 +20,7 @@
 			  <a class="navbar-brand">Administración de pendientes por condición</a>
 			  <form class="d-flex">
 				{% if request.user.is_authenticated %}
+				<h4>Usuario: {{user.username}} </h4>
 				<a class="btn btn-primary mx-2" href="{% url 'logout' %}">Logout</a>
 				{% else %}
 				<a class="btn btn-primary me-md-2 mx-2" href="{% url 'register' %}">Regístrate</a>
